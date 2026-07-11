@@ -1,5 +1,6 @@
-- type: web
-    name: route53-clone-frontend
+services:
+  - type: web
+    name: route53clone-frontend
     runtime: node
     plan: free
     rootDir: frontend
