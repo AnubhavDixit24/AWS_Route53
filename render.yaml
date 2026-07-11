@@ -1,0 +1,10 @@
+- type: web
+    name: route53-clone-frontend
+    runtime: node
+    plan: free
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://route53-clone-backend.onrender.com   # your backend's actual Render URL
