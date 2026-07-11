@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Request, Response, status
 from sqlalchemy.orm import Session as DBSession
-
+import os
 from ..database import get_db
 from ..auth import (
     authenticate_user,
@@ -26,13 +26,17 @@ def login(payload: LoginRequest, response: Response, db: DBSession = Depends(get
 
     session = create_session(db, user)
 
+    IS_PROD = os.environ.get("RENDER") is not None
+
     response.set_cookie(
         key=COOKIE_NAME,
         value=session.token,
         httponly=True,
-        samesite="lax",
-        max_age=60 * 60 * 24 * 7,  # 7 days
+        samesite="none" if IS_PROD else "lax",
+        secure=IS_PROD,
+        max_age=60 * 60 * 24 * 7,
     )
+
 
     return user
 
