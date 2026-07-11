@@ -9,7 +9,7 @@ from ..auth import get_current_user
 from ..models import HostedZone, Record, User
 from ..schemas import RecordCreate, RecordUpdate, RecordOut, RecordListOut
 
-router = APIRouter(prefix="/api/records",tags=["records"])
+router = APIRouter(tags=["records"])
 
 
 def _to_out(record: Record) -> RecordOut:
