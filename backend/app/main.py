@@ -36,7 +36,7 @@ app.add_middleware(
 )
 
 
-api_prefix = "/api"
+# api_prefix = "/api"
 app.include_router(auth_router.router)
 app.include_router(zones_router.router)
 app.include_router(records_router.router)
