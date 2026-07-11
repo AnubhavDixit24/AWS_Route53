@@ -8,4 +8,4 @@ services:
     startCommand: "npm run start"
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        value: https://route53-clone-backend.onrender.com   # your backend's actual Render URL
+        value: https://route53-clone-frontend.onrender.com   # your backend's actual Render URL
